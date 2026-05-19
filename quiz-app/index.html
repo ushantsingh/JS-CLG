@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧠 Quiz Time!</title>
+  <meta name="description" content="A fun and interactive quiz app to test your knowledge!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <!-- START SCREEN -->
+  <div class="screen active" id="start-screen">
+    <div class="card start-card">
+      <div class="brain-emoji">🧠</div>
+      <h1>Quiz Time!</h1>
+      <p class="subtitle">Test your knowledge with our fun quiz challenge. 5 questions, 15 seconds each!</p>
+      <div class="stats-preview">
+        <div class="stat-item">
+          <span class="stat-icon">❓</span>
+          <span class="stat-label">5 Questions</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">⏱️</span>
+          <span class="stat-label">15s Per Q</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">🏆</span>
+          <span class="stat-label">Win Points</span>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="start-btn" onclick="startQuiz()">
+        Start Quiz
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div class="screen" id="quiz-screen">
+    <div class="card quiz-card">
+      <!-- Header -->
+      <div class="quiz-header">
+        <div class="score-badge">
+          <span class="score-label">Score</span>
+          <span class="score-value" id="score-display">0</span>
+        </div>
+        <div class="progress-info">
+          <span id="question-counter">Question 1 of 5</span>
+        </div>
+        <div class="timer-badge" id="timer-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span id="timer-display">0:15</span>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+
+      <!-- Timer Arc -->
+      <div class="timer-arc-wrapper">
+        <svg class="timer-arc" viewBox="0 0 36 36" id="timer-arc-svg">
+          <path class="arc-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          <path class="arc-fill" id="arc-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="100, 100"/>
+        </svg>
+      </div>
+
+      <!-- Question -->
+      <div class="question-area">
+        <p class="question-text" id="question-text">Loading question...</p>
+      </div>
+
+      <!-- Options -->
+      <div class="options-grid" id="options-container">
+        <!-- Options injected by JS -->
+      </div>
+
+      <!-- Feedback Message -->
+      <div class="feedback-msg" id="feedback-msg"></div>
+
+      <!-- Next Button -->
+      <button class="btn btn-next" id="next-btn" onclick="nextQuestion()" disabled>
+        Next Question
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div class="screen" id="result-screen">
+    <div class="card result-card">
+      <div class="result-emoji" id="result-emoji">🏆</div>
+      <h2 id="result-title">Excellent!</h2>
+      <p id="result-subtitle">You're a quiz master!</p>
+
+      <div class="result-score-ring">
+        <svg viewBox="0 0 120 120" class="ring-svg">
+          <circle class="ring-bg" cx="60" cy="60" r="54" />
+          <circle class="ring-progress" id="ring-progress" cx="60" cy="60" r="54" stroke-dasharray="339.3 339.3" stroke-dashoffset="339.3" />
+        </svg>
+        <div class="ring-text">
+          <span class="ring-score" id="final-score">0</span>
+          <span class="ring-total" id="final-total">/50</span>
+        </div>
+      </div>
+
+      <div class="result-stats">
+        <div class="result-stat">
+          <span class="result-stat-icon">✅</span>
+          <span class="result-stat-label">Correct</span>
+          <span class="result-stat-value" id="correct-count">0</span>
+        </div>
+        <div class="result-stat">
+          <span class="result-stat-icon">❌</span>
+          <span class="result-stat-label">Wrong</span>
+          <span class="result-stat-value" id="wrong-count">0</span>
+        </div>
+        <div class="result-stat">
+          <span class="result-stat-icon">⏭️</span>
+          <span class="result-stat-label">Skipped</span>
+          <span class="result-stat-value" id="skipped-count">0</span>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn btn-primary" onclick="restartQuiz()">
+          Play Again
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
