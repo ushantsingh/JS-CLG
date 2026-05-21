@@ -1,9 +1,3 @@
-function sum(a) {
-    return function (b) {
-        if (b) {
-            return sum(a+b)
-        }
-        return a
-    }
-}
-console.log(sum(6)(5)(8)(1)(4)(5)(3)(6)())
+let arr = [1,2,3,4]
+let nums = [...arr, 7,8,9,0,23]
+console.log(nums);
