@@ -1,4 +1,9 @@
-function sum(a, b, c, ...nums) {
-    return a+b+c+...nums
+
+let obj = {
+    id: 1,
+    name : "ushant"
 }
-sum(3,4,5,54,4,1,5,7,76,9)
+
+let {id, name} = obj
+console.log(id);
+console.log(name);

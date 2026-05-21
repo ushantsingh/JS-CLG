@@ -56,6 +56,24 @@ console.log(nums);
 
 // Rest Operator:-
 function sum(a, b, c, ...nums) {
-    // return a+b+c+
+    console.log(nums);
+    
 }
-sum(3,4,5,54,4,1,5,7,76,9)
+sum(3, 4, 5, 54, 4, 1, 5, 7, 76, 9)
+
+// Destructuring 
+let arr1 = [1,2,3,4,5,6,7,8]
+let [a, b, c] = arr1
+console.log(a);
+console.log(b);
+console.log(c);
+
+
+let obj = {
+    id: 1,
+    name : "ushant"
+}
+
+let {id, name} = obj
+console.log(id);
+console.log(name);
