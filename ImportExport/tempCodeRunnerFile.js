@@ -1,3 +1,4 @@
-let arr = [1,2,3,4]
-let nums = [...arr, 7,8,9,0,23]
-console.log(nums);
+function sum(a, b, c, ...nums) {
+    return a+b+c+...nums
+}
+sum(3,4,5,54,4,1,5,7,76,9)
