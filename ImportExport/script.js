@@ -77,3 +77,6 @@ let obj = {
 let {id, name} = obj
 console.log(id);
 console.log(name);
+
+
+// React se pahle JQuery hua krti thi jo ki DOM Manupulation ko aasan bna deti hai
