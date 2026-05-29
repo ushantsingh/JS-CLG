@@ -241,6 +241,7 @@ const App = () => {
                 className="delete-btn"
                 onClick={() => handleDelete(product.id)}
               >
+                
                 🗑️ Delete Product
               </button>
             </div>
