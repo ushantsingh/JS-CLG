@@ -124,16 +124,132 @@
 // export default App
 
 
+// import './App.css'
+// import React from 'react'
+// import Form from './Form'
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Form/>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// useState se humara code baarbar re-render hoga
+// useEffect Hook:- agar hume api call baar baar ya unncessary call nhi krwana hai toh useffect use karange
+
+
+// import React, { useEffect, useState } from 'react'
+// const App = () => {
+//   const [count, setCout] = useState(0)
+//   const [city, setCity] = useState('goa')
+
+//   console.log("hii");
+  
+//   useEffect(() => {
+//     console.log("Hello"); 
+//   }, [city])
+//   // console.log("Hello"); //Yha pe useState ke karan baar baar re-render ho rha hai pura code 
+  
+//   return (
+//     <div>
+//       <h1>{count}</h1>
+//       <h2>{city}</h2>
+//       <button onClick={()=>{setCity('Delhi')}}>Change</button>
+//       <button onClick={()=>{setCout(count+1)}}>Click</button>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// import React, { useEffect, useState } from 'react'
+
+// const App = () => {
+//   const [city, setCity] = useState('goa')
+//   console.log("hello");
+  
+//   useEffect(() => {
+//     console.log("hello");
+//   }, [])
+
+//   return (
+//     <div>
+//       <h2>{city}</h2>
+//       <button onClick={()=>{setCity('delhi')}}>click</button>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+
+import React, { useEffect, useState } from 'react'
 import './App.css'
-import React from 'react'
-import Form from './Form'
 
 const App = () => {
+  const [apiData, setApiData] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('https://dummyjson.com/products')
+      .then((res) => res.json())
+      .then((data) => {
+        setApiData(data.products)
+        setLoading(false)
+      })
+  }, [])
+
+  function handleDelete(id) {
+    setApiData(apiData.filter((product) => product.id !== id))
+  }
+
+  if (loading) {
+    return (
+      <div className="loader-wrapper">
+        <div className="spinner"></div>
+        <p className="loader-text">Loading Products...</p>
+      </div>
+    )
+  }
+
   return (
-    <div>
-      <Form/>
+    <div className="page">
+      <h1 className="page-title">🛒 Product Store</h1>
+      <p className="page-subtitle">{apiData.length} products available</p>
+      <div className="cards-grid">
+        {apiData.map((product) => (
+          <div className="card" key={product.id}>
+            <div className="card-img-wrapper">
+              <img src={product.thumbnail} alt={product.title} className="card-img" />
+              <span className="card-category">{product.category}</span>
+            </div>
+            <div className="card-body">
+              <h2 className="card-title">{product.title}</h2>
+              <p className="card-description">{product.description?.slice(0, 70)}...</p>
+              <div className="card-meta">
+                <span className="card-price">${product.price}</span>
+                <span className="card-rating">⭐ {product.rating}</span>
+              </div>
+              <button
+                className="delete-btn"
+                onClick={() => handleDelete(product.id)}
+              >
+                🗑️ Delete Product
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
 
 export default App
+
