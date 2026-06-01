@@ -190,67 +190,82 @@
 
 
 
-import React, { useEffect, useState } from 'react'
-import './App.css'
+// import React, { useEffect, useState } from 'react'
+// import './App.css'
+
+// const App = () => {
+//   const [apiData, setApiData] = useState([])
+//   const [loading, setLoading] = useState(true)
+
+//   useEffect(() => {
+//     fetch('https://dummyjson.com/products')
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setApiData(data.products)
+//         setLoading(false)
+//       })
+//   }, [])
+
+//   function handleDelete(id) {
+//     setApiData(apiData.filter((product) => product.id !== id))
+//   }
+
+//   if (loading) {
+//     return (
+//       <div className="loader-wrapper">
+//         <div className="spinner"></div>
+//         <p className="loader-text">Loading Products...</p>
+//       </div>
+//     )
+//   }
+
+//   return (
+//     <div className="page">
+//       <h1 className="page-title">🛒 Product Store</h1>
+//       <p className="page-subtitle">{apiData.length} products available</p>
+//       <div className="cards-grid">
+//         {apiData.map((product) => (
+//           <div className="card" key={product.id}>
+//             <div className="card-img-wrapper">
+//               <img src={product.thumbnail} alt={product.title} className="card-img" />
+//               <span className="card-category">{product.category}</span>
+//             </div>
+//             <div className="card-body">
+//               <h2 className="card-title">{product.title}</h2>
+//               <p className="card-description">{product.description?.slice(0, 70)}...</p>
+//               <div className="card-meta">
+//                 <span className="card-price">${product.price}</span>
+//                 <span className="card-rating">⭐ {product.rating}</span>
+//               </div>
+//               <button
+//                 className="delete-btn"
+//                 onClick={() => handleDelete(product.id)}
+//               >
+//                 🗑️ Delete Product
+//               </button>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+
+// TASK:-
+
+import React from 'react'
+import Task from './Task'
 
 const App = () => {
-  const [apiData, setApiData] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetch('https://dummyjson.com/products')
-      .then((res) => res.json())
-      .then((data) => {
-        setApiData(data.products)
-        setLoading(false)
-      })
-  }, [])
-
-  function handleDelete(id) {
-    setApiData(apiData.filter((product) => product.id !== id))
-  }
-
-  if (loading) {
-    return (
-      <div className="loader-wrapper">
-        <div className="spinner"></div>
-        <p className="loader-text">Loading Products...</p>
-      </div>
-    )
-  }
-
   return (
-    <div className="page">
-      <h1 className="page-title">🛒 Product Store</h1>
-      <p className="page-subtitle">{apiData.length} products available</p>
-      <div className="cards-grid">
-        {apiData.map((product) => (
-          <div className="card" key={product.id}>
-            <div className="card-img-wrapper">
-              <img src={product.thumbnail} alt={product.title} className="card-img" />
-              <span className="card-category">{product.category}</span>
-            </div>
-            <div className="card-body">
-              <h2 className="card-title">{product.title}</h2>
-              <p className="card-description">{product.description?.slice(0, 70)}...</p>
-              <div className="card-meta">
-                <span className="card-price">${product.price}</span>
-                <span className="card-rating">⭐ {product.rating}</span>
-              </div>
-              <button
-                className="delete-btn"
-                onClick={() => handleDelete(product.id)}
-              >
-                
-                🗑️ Delete Product
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div>
+      <Task/>
     </div>
   )
 }
 
 export default App
-
