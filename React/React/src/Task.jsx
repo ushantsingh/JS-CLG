@@ -43,9 +43,6 @@ const Task = () => {
     setApiData(sorted)
   }
 
-  // Unique brand
-  const brands = [...new ]
-
   return (
     <div>
       <input type="text" onChange={(e)=>setSearch(e.target.value)}/>

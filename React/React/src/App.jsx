@@ -255,15 +255,40 @@
 
 
 
-// TASK:-
+// // TASK:-
+
+// import React from 'react'
+// import Task from './Task'
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Task/>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
 
 import React from 'react'
+import Navbar from './Navbar'
+import ContactUs from './ContactUs'
+import Home from './Home'
+import About from './About'
+import { Routes, Route } from "react-router-dom"
 import Task from './Task'
 
 const App = () => {
   return (
     <div>
-      <Task/>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/about" element={<About/>}></Route>
+        <Route path="/task" element={<Task/>}></Route>
+      </Routes>
     </div>
   )
 }
