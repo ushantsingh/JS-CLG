@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const TodoList = () => {
     let [input, setInput] = useState("")
     let [todos, setTodos] = useState([])
+
+    useEffect(() => {
+        localStorage.setItem("keys", JSON.stringify(todos))
+    }, [todos])
 
     function del(id) {
         let updatedData = todos.filter((a, b) => {
@@ -10,6 +14,8 @@ const TodoList = () => {
         })
         setTodos(updatedData)
     }
+
+    
 
   return (
     <div>
