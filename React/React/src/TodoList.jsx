@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 const TodoList = () => {
     let [input, setInput] = useState("")
-    let [todos, setTodos] = useState([])
+    let [todos, setTodos] = useState(() => {
+        let data = localStorage.getItem("keys")
+        if (data) {
+            return JSON.parse(data)
+        }
+        return []
+    });
 
     useEffect(() => {
         localStorage.setItem("keys", JSON.stringify(todos))
@@ -14,8 +20,6 @@ const TodoList = () => {
         })
         setTodos(updatedData)
     }
-
-    
 
   return (
     <div>
