@@ -309,3 +309,19 @@ const App = () => {
 }
 
 export default App
+
+
+// UseReducer:- it is like useState but more powerful
+
+// import React from 'react'
+// import CounterUseReduceer from './CounterUseReduceer'
+
+// const App = () => {
+//   return (
+//     <div>
+//       <CounterUseReduceer/>
+//     </div>
+//   )
+// }
+
+// export default App
