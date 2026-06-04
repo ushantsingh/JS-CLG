@@ -1,17 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 
 const TodoList = () => {
     let [input, setInput] = useState("")
     let [todos, setTodos] = useState([]);
+    let [index, setIndex] = useState(null)
 
     function del(id) {
         setTodos(todos.filter((a, b) => id !== b))
     }
 
     function edit(id) {
-        let editData = prompt("Edit your task:", todos[id])
-        if (editData !== null) {
-            setTodos(todos.map((a, b) => b === id ? editData : a))
+        if (index !== null) {
+            setTodos(todos.map((a, b) => b === id ? index : a))
+        }
+        setIndex(id)
+    }
+
+    function handleAddOrUpdate() {
+        if (input.trim() == "") {
+            return;
+        }
+
+        if (index !== null) {
+            let updateData = [...todos]
+            updateData[index] = input
+            setTodos(updateData)
+        } else {
+            setTodos([...todos, input])
+            setInput("")
         }
     }
 
@@ -19,7 +35,7 @@ const TodoList = () => {
         <div>
             <h1>TodoList</h1>
             <input onChange={(e) => setInput(e.target.value)} type="text" placeholder='Enter a task' />
-            <button onClick={() => setTodos([...todos, input])}>add</button>
+            <button onClick={handleAddOrUpdate}>{index !== null ? "Update" : "add"}</button>
             {todos.map((a, index) => (
                 <div key={index}>
                     <h3>{a}</h3>

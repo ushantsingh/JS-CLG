@@ -4,7 +4,7 @@ const Task = () => {
 
   const [search, setSearch] = useState('')
   const [apiData, setApiData] = useState([])
-  const [brand, setBrand] = useState('')
+  // const [brand, setBrand] = useState('')
 
     async function apiCall() {
         if (!search.trim()) {
