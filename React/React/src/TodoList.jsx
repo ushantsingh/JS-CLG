@@ -79,7 +79,7 @@ const TodoList = () => {
     <div>
       <h1>TODOLIST</h1>
         <input onChange={(e) => dispatch({ type: "input", payload: e.target.value})} type="text" placeholder='Enter a task'/>
-          <button onClick={dispatch({ type: "add_todo" })}>add</button>
+          <button onClick={() => dispatch({ type: "add_todo" })}>add</button>
           {
             state.todos.map((a) => {
                 return (
