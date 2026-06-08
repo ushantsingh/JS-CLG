@@ -324,16 +324,41 @@
 //   )
 // }
 
+// // export default App
+
+
+// import React from 'react'
+// import Home from './Home'
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Home/>
+//     </div>
+//   )
+// }
+
 // export default App
 
 
-import React from 'react'
+
+import React, { useState } from 'react'
 import Home from './Home'
+import Navbar from './Navbar'
+import './App.css'
+import {Routes, Route} from 'react-router-dom'
+import Cart from './Cart'
 
 const App = () => {
+  const [apiData, setApiData] = useState([])
+  const [cart, setCart] = useState([])
   return (
     <div>
-      <Home/>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home apiData={apiData } setApiData={setApiData} cart={cart} setCart={setCart} /> } />
+        <Route path='/cart' element={<Cart cart={cart}/> } />
+      </Routes>
     </div>
   )
 }
