@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import context from '../context'
 // import { useState } from 'react'
 // import A from './A.jsx';
 // import A from './A.JSX';
@@ -36,10 +37,25 @@ import React from 'react'
 
 
 
+// const Home = () => {
+//   return (
+//     <div>
+//       Home 
+//     </div>
+//   )
+// }
+
+// export default Home
+
+
+
+// import React from 'react'
+
 const Home = () => {
+  let data = useContext(context)
   return (
     <div>
-      Home 
+      {data}
     </div>
   )
 }

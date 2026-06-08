@@ -296,19 +296,19 @@
 // export default App
 
 
-import React from 'react'
-import TodoList from './TodoList'
-import './App.css'
+// import React from 'react'
+// import TodoList from './TodoList'
+// import './App.css'
 
-const App = () => {
-  return (
-    <div>
-      <TodoList/>
-    </div>
-  )
-}
+// const App = () => {
+//   return (
+//     <div>
+//       <TodoList/>
+//     </div>
+//   )
+// }
 
-export default App
+// export default App
 
 
 // UseReducer:- it is like useState but more powerful
@@ -325,3 +325,17 @@ export default App
 // }
 
 // export default App
+
+
+import React from 'react'
+import Home from './Home'
+
+const App = () => {
+  return (
+    <div>
+      <Home/>
+    </div>
+  )
+}
+
+export default App
