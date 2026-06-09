@@ -1,4 +1,4 @@
-*{
+/* *{
   margin: 0;
   padding: 0;
 }
@@ -6,8 +6,8 @@
 nav{
   background-color: black;
   height: 40px;
-  display: flex;
-  justify-content: space-around;
+  display: flex; */
+  /* justify-content: space-around;
   align-items: center;
 
 }
@@ -17,12 +17,12 @@ li{
 #card{
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 20px; */
   /* height: 200px;
   width: 171px;
   background-color: antiquewhite; */
-}
-#main_card{
+/* } */
+/* #main_card{
   height: 200px;
   width: 171px;
   background-color: snow;
@@ -31,4 +31,6 @@ li{
 img{
   height: 80%;
   width: 80%;
-}
+} */
+
+

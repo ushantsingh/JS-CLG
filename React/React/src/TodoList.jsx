@@ -1,5 +1,7 @@
 // import React, {  useState } from 'react'
 
+import { useReducer } from "react"
+
 // const TodoList = () => {
 //     let [input, setInput] = useState("")
 //     let [todos, setTodos] = useState([]);
@@ -85,7 +87,7 @@
 //             index: action.payload
 //           } 
 //         } else if (action.type == "updateTodo") {
-//           let updateTodo = [...state.todbnos]
+//           let updateTodo = [...state.todos]
 //           updateTodo[state.index] = state.input
 //           return {
 //             ...state,
@@ -157,3 +159,82 @@
 // }
 
 // export default TodoList
+
+
+
+// TODO LIST:-
+import './Todo.css'
+
+
+
+const TodoList = () => {
+    let data = {
+        input: "",
+        todos: [],
+        index:null
+    }
+    function reduser(state, action) {
+        if (action.type === "Input") {
+            return {
+                ...state,
+                input:action.payload
+            }
+        }
+        else if (action.type === "add_data") {
+            return {
+                ...state,
+                todos:[...state.todos,state.input]
+            }
+        } else if (action.type === "delete") {
+            return {
+                ...state,
+                todos: state.todos.filter((_, id) => {
+                    return id !== action.payload
+                })
+            }
+        } else if (action.type === "editTodo") {
+            return {
+                ...state,
+                input: state.todos[action.payload],
+                index:action.payload,
+            }
+        } else if (action.type === "updateTodo") {
+            let updatedTodo = [...state.todos]
+            updatedTodo[state.index] = state.input
+            return {
+                ...state,
+                todos: updatedTodo,
+                input: "",
+                index: null
+            }
+        }
+        
+    }
+    let [state, dispatch] = useReducer(reduser, data) 
+    
+    function handleClick() {
+        if (state.index !== null) {
+            return dispatch({type: "updateTodo"})
+        } else {
+            return dispatch({type: "add_data"})
+        }
+    }
+  return (
+    <div id="todo-root">
+          <input  onChange={(e)=>dispatch({type:"Input", payload:e.target.value})}/>
+          <button onClick={handleClick}>{state.index!==null?"update":"add" }</button>
+
+          {
+              state.todos.map((a,id) => {
+                  return (<>
+                      <h5 key={id}>{a}</h5>
+                      <button onClick={() => dispatch({ type: "delete", payload: id })}>delete</button>
+                      <button onClick={()=>dispatch({type: "editTodo",payload:id})}>edit</button>
+                  </>)
+            })  
+          }
+    </div>
+  )
+}
+
+export default TodoList

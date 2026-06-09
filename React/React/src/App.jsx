@@ -342,23 +342,38 @@
 
 
 
-import React, { useState } from 'react'
-import Home from './Home'
-import Navbar from './Navbar'
-import './App.css'
-import {Routes, Route} from 'react-router-dom'
-import Cart from './Cart'
+// import React, { useState } from 'react'
+// import Home from './Home'
+// import Navbar from './Navbar'
+// import './App.css'
+// import {Routes, Route} from 'react-router-dom'
+// import Cart from './Cart'
+
+// const App = () => {
+//   const [apiData, setApiData] = useState([])
+//   const [cart, setCart] = useState([])
+//   return (
+//     <div>
+//       <Navbar />
+//       <Routes>
+//         <Route path='/' element={<Home apiData={apiData } setApiData={setApiData} cart={cart} setCart={setCart} /> } />
+//         <Route path='/cart' element={<Cart cart={cart}/> } />
+//       </Routes>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+import React from 'react'
+import TodoList from './TodoList'
+
 
 const App = () => {
-  const [apiData, setApiData] = useState([])
-  const [cart, setCart] = useState([])
   return (
     <div>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home apiData={apiData } setApiData={setApiData} cart={cart} setCart={setCart} /> } />
-        <Route path='/cart' element={<Cart cart={cart}/> } />
-      </Routes>
+      <TodoList/>
     </div>
   )
 }
