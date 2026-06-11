@@ -381,14 +381,22 @@
 // export default App
 
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import useCounter from './useCounter'
 
 const App = () => {
   let { count, inc, dec, reSet } = useCounter(0)
+
+  let total = useMemo(() => {
+    let res = 0
+    for (let i = 0; i < 1000000000; i++){
+      res += i
+    }
+  }, [])
   return (
     <div>
       <h3>{count}</h3>
+      <h3>{total}</h3>
       <button onClick={inc}>++</button>
       <button onClick={dec}>--</button>
       <button onClick={reSet}>Reset</button>
