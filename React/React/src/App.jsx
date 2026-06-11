@@ -366,14 +366,32 @@
 // export default App
 
 
-import React from 'react'
-import TodoList from './TodoList'
+// import React from 'react'
+// import TodoList from './TodoList'
 
+
+// const App = () => {
+//   return (
+//     <div>
+//       <TodoList/>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+import React from 'react'
+import useCounter from './useCounter'
 
 const App = () => {
+  let { count, inc, dec, reSet } = useCounter(0)
   return (
     <div>
-      <TodoList/>
+      <h3>{count}</h3>
+      <button onClick={inc}>++</button>
+      <button onClick={dec}>--</button>
+      <button onClick={reSet}>Reset</button>
     </div>
   )
 }
