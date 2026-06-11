@@ -381,27 +381,70 @@
 // export default App
 
 
-import React, { useMemo } from 'react'
-import useCounter from './useCounter'
+// USE MEMO:-
+
+// import React, { useMemo } from 'react'
+// import useCounter from './useCounter'
+
+// const App = () => {
+//   let { count, inc, dec, reSet } = useCounter(0)
+
+//   let total = useMemo(() => {
+//     let res = 0
+//     for (let i = 0; i < 1000000000; i++){
+//       res += i
+//     }
+//   }, [])
+//   return (
+//     <div>
+//       <h3>{count}</h3>
+//       <h3>{total}</h3>
+//       <button onClick={inc}>++</button>
+//       <button onClick={dec}>--</button>
+//       <button onClick={reSet}>Reset</button>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+
+// FUNCIONS ko MEMO mai kaise use krte hai 
+// MEMO for functions
+// Memo child wale ko rerender hone se rokta hai 
+import React, { memo, useState } from 'react'
 
 const App = () => {
-  let { count, inc, dec, reSet } = useCounter(0)
-
-  let total = useMemo(() => {
-    let res = 0
-    for (let i = 0; i < 1000000000; i++){
-      res += i
-    }
-  }, [])
+  let [count, setCount] = useState(0)
   return (
     <div>
-      <h3>{count}</h3>
-      <h3>{total}</h3>
-      <button onClick={inc}>++</button>
-      <button onClick={dec}>--</button>
-      <button onClick={reSet}>Reset</button>
+      <h2>{count}</h2>
+      <button onClick={()=>setCount(count + 1)}>add</button>
+      <Child/>
     </div>
   )
 }
+
+// const Child = () => {
+  // console.log("hello");
+  
+  // return (
+  //   <div>
+  //     hello
+  //   </div>
+  // )
+// }
+
+let Child = memo(function () {
+    console.log("hello");
+  
+  return (
+      <div>
+        hello
+      </div>
+    )
+  }
+)
 
 export default App
