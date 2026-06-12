@@ -410,41 +410,63 @@
 
 
 
-// FUNCIONS ko MEMO mai kaise use krte hai 
-// MEMO for functions
-// Memo child wale ko rerender hone se rokta hai 
-import React, { memo, useState } from 'react'
+// // FUNCIONS ko MEMO mai kaise use krte hai 
+// // MEMO for functions
+// // Memo child wale ko rerender hone se rokta hai 
+// import React, { memo, useState } from 'react'
+
+// const App = () => {
+//   let [count, setCount] = useState(0)
+//   return (
+//     <div>
+//       <h2>{count}</h2>
+//       <button onClick={()=>setCount(count + 1)}>add</button>
+//       <Child/>
+//     </div>
+//   )
+// }
+
+// // const Child = () => {
+//   // console.log("hello");
+  
+//   // return (
+//   //   <div>
+//   //     hello
+//   //   </div>
+//   // )
+// // }
+
+// let Child = memo(function () {
+//     console.log("hello");
+  
+//   return (
+//       <div>
+//         hello
+//       </div>
+//     )
+//   }
+// )
+
+// export default App
+
+
+// UseContext
+
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Home from './Home'
+import Cart from './Cart'
 
 const App = () => {
-  let [count, setCount] = useState(0)
   return (
     <div>
-      <h2>{count}</h2>
-      <button onClick={()=>setCount(count + 1)}>add</button>
-      <Child/>
+     
+      <Routes>
+        <Route path="/" element= {<Home/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+      </Routes>
     </div>
   )
 }
-
-// const Child = () => {
-  // console.log("hello");
-  
-  // return (
-  //   <div>
-  //     hello
-  //   </div>
-  // )
-// }
-
-let Child = memo(function () {
-    console.log("hello");
-  
-  return (
-      <div>
-        hello
-      </div>
-    )
-  }
-)
 
 export default App
