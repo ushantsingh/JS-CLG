@@ -19,10 +19,14 @@ createRoot(document.getElementById('root')).render(
     //     <App/>
     // </BrowserRouter>
 
-    <BrowserRouter>
-        <Context>
-            <App/>
-         </Context>
-        </BrowserRouter>
+    // <BrowserRouter>
+    //     <Context>
+    //         <App/>
+    //      </Context>
+    //     </BrowserRouter>
        
+
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>
 )

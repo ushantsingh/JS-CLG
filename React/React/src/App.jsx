@@ -450,20 +450,41 @@
 // export default App
 
 
-// UseContext
+// // UseContext
+
+// import React from 'react'
+// import { Routes, Route } from 'react-router-dom'
+// import Home from './Home'
+// import Cart from './Cart'
+
+// const App = () => {
+//   return (
+//     <div>
+     
+//       <Routes>
+//         <Route path="/" element= {<Home/>}/>
+//         <Route path='/cart' element={<Cart/>}/>
+//       </Routes>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// Dynamic Routing:-
 
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Home from './Home'
-import Cart from './Cart'
+import { Route, Routes } from 'react-router-dom'
+import UserList from './UserList'
+import UserProfile from './UserProfile'
 
 const App = () => {
   return (
     <div>
-     
       <Routes>
-        <Route path="/" element= {<Home/>}/>
-        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/' element={<UserList/>} />
+        <Route path='/profile/:id' element={<UserProfile/>} />
       </Routes>
     </div>
   )
