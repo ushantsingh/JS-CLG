@@ -474,20 +474,34 @@
 
 // Dynamic Routing:-
 
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import UserList from './UserList'
-import UserProfile from './UserProfile'
+// import React from 'react'
+// import { Route, Routes } from 'react-router-dom'
+// import UserList from './UserList'
+// import UserProfile from './UserProfile'
 
-const App = () => {
-  return (
-    <div>
-      <Routes>
-        <Route path='/' element={<UserList/>} />
-        <Route path='/profile/:id' element={<UserProfile/>} />
-      </Routes>
-    </div>
-  )
-}
+// const App = () => {
+//   return (
+//     <div>
+//       <Routes>
+//         <Route path='/' element={<UserList/>} />
+//         <Route path='/profile/:id' element={<UserProfile/>} />
+//       </Routes>
+//     </div>
+//   )
+// }
 
-export default App
+// export default App
+
+
+
+// import React from 'react'
+
+// const App = () => {
+//   return (
+//     <div className='bg-red-600 h-[100px]'>
+//       App
+//     </div>
+//   )
+// }
+
+// export default App
