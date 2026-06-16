@@ -12,8 +12,6 @@
 
 // export default App
 
-
-
 // import React from 'react'
 // import Home from './Home'
 
@@ -47,10 +45,8 @@
 
 // export default App
 
-
 // import { useRef } from "react";
 // import { useState } from "react";
-
 
 // // Stopwatch: start, stop, reset
 // import React from 'react'
@@ -60,8 +56,7 @@
 //   const [time, setTime] = useState(0);
 //   const intervalRef = useRef(null);
 
-
-//   function handleStart() {  
+//   function handleStart() {
 //     if (intervalRef.current != null) {
 //       return;
 //     }
@@ -75,8 +70,7 @@
 //     clearInterval(intervalRef.current)
 //     intervalRef.current = null;
 //   }
-  
-  
+
 //   function handleReset() {
 //     intervalRef.current = null;
 //     clearInterval(intervalRef.current);
@@ -97,14 +91,12 @@
 
 // export default App
 
-
 // import React, { useState } from 'react'
 
 // const App = () => {
 //   const [input, setInput] = useState('')
 //   const[showText, setShowText ] = useState('')
 
-  
 //   return (
 //     <div>
 //       {/* {input} */}
@@ -112,7 +104,7 @@
 //       <input name='input' value={input} type="text" onChange={(e) => {
 //         setInput(e.target.value)
 //       }} />
-      
+
 //       <button onClick={() => {
 //         setShowText(input)
 //         setInput("")
@@ -122,7 +114,6 @@
 // }
 
 // export default App
-
 
 // import './App.css'
 // import React from 'react'
@@ -138,10 +129,8 @@
 
 // export default App
 
-
 // useState se humara code baarbar re-render hoga
 // useEffect Hook:- agar hume api call baar baar ya unncessary call nhi krwana hai toh useffect use karange
-
 
 // import React, { useEffect, useState } from 'react'
 // const App = () => {
@@ -149,12 +138,12 @@
 //   const [city, setCity] = useState('goa')
 
 //   console.log("hii");
-  
+
 //   useEffect(() => {
-//     console.log("Hello"); 
+//     console.log("Hello");
 //   }, [city])
-//   // console.log("Hello"); //Yha pe useState ke karan baar baar re-render ho rha hai pura code 
-  
+//   // console.log("Hello"); //Yha pe useState ke karan baar baar re-render ho rha hai pura code
+
 //   return (
 //     <div>
 //       <h1>{count}</h1>
@@ -167,13 +156,12 @@
 
 // export default App
 
-
 // import React, { useEffect, useState } from 'react'
 
 // const App = () => {
 //   const [city, setCity] = useState('goa')
 //   console.log("hello");
-  
+
 //   useEffect(() => {
 //     console.log("hello");
 //   }, [])
@@ -187,8 +175,6 @@
 // }
 
 // export default App
-
-
 
 // import React, { useEffect, useState } from 'react'
 // import './App.css'
@@ -253,8 +239,6 @@
 
 // export default App
 
-
-
 // // TASK:-
 
 // import React from 'react'
@@ -269,8 +253,6 @@
 // }
 
 // export default App
-
-
 
 // import React from 'react'
 // import Navbar from './Navbar'
@@ -295,7 +277,6 @@
 
 // export default App
 
-
 // import React from 'react'
 // import TodoList from './TodoList'
 // import './App.css'
@@ -309,7 +290,6 @@
 // }
 
 // export default App
-
 
 // UseReducer:- it is like useState but more powerful
 
@@ -326,7 +306,6 @@
 
 // // export default App
 
-
 // import React from 'react'
 // import Home from './Home'
 
@@ -339,8 +318,6 @@
 // }
 
 // export default App
-
-
 
 // import React, { useState } from 'react'
 // import Home from './Home'
@@ -365,10 +342,8 @@
 
 // export default App
 
-
 // import React from 'react'
 // import TodoList from './TodoList'
-
 
 // const App = () => {
 //   return (
@@ -379,7 +354,6 @@
 // }
 
 // export default App
-
 
 // USE MEMO:-
 
@@ -408,11 +382,9 @@
 
 // export default App
 
-
-
-// // FUNCIONS ko MEMO mai kaise use krte hai 
+// // FUNCIONS ko MEMO mai kaise use krte hai
 // // MEMO for functions
-// // Memo child wale ko rerender hone se rokta hai 
+// // Memo child wale ko rerender hone se rokta hai
 // import React, { memo, useState } from 'react'
 
 // const App = () => {
@@ -428,7 +400,7 @@
 
 // // const Child = () => {
 //   // console.log("hello");
-  
+
 //   // return (
 //   //   <div>
 //   //     hello
@@ -438,7 +410,7 @@
 
 // let Child = memo(function () {
 //     console.log("hello");
-  
+
 //   return (
 //       <div>
 //         hello
@@ -448,7 +420,6 @@
 // )
 
 // export default App
-
 
 // // UseContext
 
@@ -460,7 +431,7 @@
 // const App = () => {
 //   return (
 //     <div>
-     
+
 //       <Routes>
 //         <Route path="/" element= {<Home/>}/>
 //         <Route path='/cart' element={<Cart/>}/>
@@ -470,7 +441,6 @@
 // }
 
 // export default App
-
 
 // Dynamic Routing:-
 
@@ -492,8 +462,6 @@
 
 // export default App
 
-
-
 // import React from 'react'
 
 // const App = () => {
@@ -505,3 +473,62 @@
 // }
 
 // export default App
+
+// // PROTOTYPE & POLYFILL:-
+
+// import React from "react";
+
+// // Creating my own map function
+// const App = () => {
+//   // eslint-disable-next-line react-hooks/immutability
+//   Array.prototype.myMap = function (cb) {
+//     let res = []
+//     for (let i = 0; i < this.length; i++){
+//       res.push(cb(this[i], i, this))
+//     }
+//     return res
+//   }
+ 
+
+//   let arr = [1, 2, 3, 4, 5];
+//   let value = arr.myMap((a, b, c) => {
+//     return a;
+//   });
+//   console.log(value);
+
+//   return <div>hello</div>;
+// };
+
+// export default App;
+
+
+
+// Creating my own filter function:-
+import React from 'react'
+
+const App = () => {
+
+  Array.prototype.myFilter = function (cb) {
+    let result = []
+    for (let i = 0; i < this.length; i++){
+      if (cb(this[i], i, this)) {
+        result.push(this[i])
+      }
+    }
+    return result
+  }
+
+  let arr = [1,2,4,7,5,6,3,9]
+  let data = arr.myFilter((a, b, c) => {
+    return a > 2
+  })
+  console.log(data);
+  
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default App
