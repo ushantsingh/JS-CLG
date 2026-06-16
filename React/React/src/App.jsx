@@ -503,27 +503,79 @@
 
 
 
-// Creating my own filter function:-
+// // Creating my own filter function:-
+// import React from 'react'
+
+// const App = () => {
+
+//   Array.prototype.myFilter = function (cb) {
+//     let result = []
+//     for (let i = 0; i < this.length; i++){
+//       if (cb(this[i], i, this)) {
+//         result.push(this[i])
+//       }
+//     }
+//     return result
+//   }
+
+//   let arr = [1,2,4,7,5,6,3,9]
+//   let data = arr.myFilter((a, b, c) => {
+//     return a > 2
+//   })
+//   console.log(data);
+  
+//   return (
+//     <div>
+      
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// import React from 'react'
+
+// const App = () => {
+//   let arr = [1,2,3,4,5,6]
+//   let data = arr.reduce((a, b) => {
+//     return a + b
+//   }, 10)
+
+//   console.log(data);
+  
+//   return (
+//     <div>
+//       hello
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// Creating my own reduce function :-
+
 import React from 'react'
 
-const App = () => {
+Array.prototype.myReduce = function (cb, initialValue=0) {
 
-  Array.prototype.myFilter = function (cb) {
-    let result = []
-    for (let i = 0; i < this.length; i++){
-      if (cb(this[i], i, this)) {
-        result.push(this[i])
-      }
-    }
-    return result
+  let sum = initialValue
+  for (let i = 0; i < this.length; i++){
+    sum=cb(sum,this[i])
   }
+  return sum 
+}
 
-  let arr = [1,2,4,7,5,6,3,9]
-  let data = arr.myFilter((a, b, c) => {
-    return a > 2
-  })
-  console.log(data);
-  
+let arr = [1,2,3,4,5,6]
+let data = arr.myReduce((a, b, c) => {
+  return a+b
+}, 10)
+
+console.log(data);
+
+
+const App = () => {
   return (
     <div>
       
